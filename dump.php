@@ -48,6 +48,15 @@ foreach($data as $vgname => $value)
           $fpe    = $datavalues['start_extent'];
           $npe    = $datavalues['extent_count'] / $nparts;
 
+	  if($datavalues['type'] == 'thin-pool')
+	  {
+	    $nparts = 0;
+	  }
+	  if($datavalues['type'] == 'thin')
+	  {
+	    $nparts = 0;
+	  }
+
           for($n=0; $n < $nparts; ++$n)
           {
             $partcode = strtoupper(base_convert(10+$n,10,36));
